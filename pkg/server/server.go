@@ -31,7 +31,7 @@ func NewInstance(cfg *Config) *Instance {
 	return &Instance{
 		Logger: logger,
 		router: router,
-		routes: cfg.routes,
+		routeBuilder: cfg.routes,
 		
 		httpServer: &http.Server{
 			Addr:    addr,
