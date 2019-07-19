@@ -43,7 +43,7 @@ func (rb *RouteBuilder) RenderRoutes(i *Instance) {
 		case http.MethodDelete:
 			i.router.Delete(route.Path, route.Handler)
 		default:
-			i.logger.Errorf("Unknown route method: %s for %+v", route.Method, route)
+			i.Logger.Errorf("Unknown route method: %s for %+v", route.Method, route)
 		} 
   }
 }
