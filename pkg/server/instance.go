@@ -12,14 +12,14 @@ type Instance struct {
 	Logger       *logrus.Logger
 	httpServer   *http.Server
 	router       *chi.Mux
-	routes *RouteBuilder
+	routeBuilder *RouteBuilder
 }
 
 // RenderRoutes will render our RouteBuilder routes into the server instance.
 func (instance *Instance) RenderRoutes() {
-	r := instance.routes
+	rb := instance.routeBuilder
 
-	for _, route := range r.Routes {
+	for _, route := range rb.Routes {
 		switch route.Method {
 		case http.MethodGet:
 			instance.router.Get(route.Path, route.Handler)
