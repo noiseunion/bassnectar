@@ -6,8 +6,7 @@ import "github.com/go-chi/cors"
 type Config struct {
 	Addr         	string `config:"addr"`
 	Port         	string `config:"port"`
-	RouteBuilder 	*RouteBuilder
+	routes 		*RouteBuilder
 	CORS         	cors.Options
 	DisableCORS  	bool
-	ProtectedRoutes bool
 }
