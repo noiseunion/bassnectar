@@ -31,3 +31,19 @@ func (rb *RouteBuilder) Register(m, p string, h http.HandlerFunc) {
 
 	rb.Routes = append(rb.Routes, r)
 }
+
+// RenderRoutes will attach our routes to the Server Instance
+func (rb *RouteBuilder) RenderRoutes(i *Instance) {
+  for _, route := range rb.Routes {
+    switch route.Method {
+		case http.MethodGet:
+			i.router.Get(route.Path, route.Handler)
+		case http.MethodPost:
+			i.router.Post(route.Path, route.Handler)
+		case http.MethodDelete:
+			i.router.Delete(route.Path, route.Handler)
+		default:
+			i.logger.Errorf("Unknown route method: %s for %+v", route.Method, route)
+		} 
+  }
+}
